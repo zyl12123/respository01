@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.sql.*;
 
-public class JdbcUtil {
+public class JdbcUtil02 {
     private static String driver=null;
     private static String url=null;
     private static String user=null;
@@ -25,7 +25,8 @@ public class JdbcUtil {
             properties.load(in);
             driver=properties.getProperty("driver");
             System.out.println(driver);
-            url=properties.getProperty("url");
+            //url=properties.getProperty("url");这里是为了处理乱码问题修改的url。
+            url="jdbc:mysql://localhost:3306/loadsystem?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8";
             System.out.println(url);
             user=properties.getProperty("user");
             password=properties.getProperty("password");

@@ -1,9 +1,4 @@
-CREATE TABLE `userinfo` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `username` varchar(45) DEFAULT NULL,
-    `password` varchar(45) DEFAULT NULL,
-    PRIMARY KEY (`id`)
-  )
+
 
   CREATE TABLE `useraddr` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -12,3 +7,11 @@ CREATE TABLE `userinfo` (
    `userid` varchar(45) DEFAULT NULL,
    PRIMARY KEY (`id`)
  )
+
+ CREATE TABLE `userinfo` (
+     `id` INT(11) NOT NULL AUTO_INCREMENT,
+     `username` VARCHAR(45) NOT NULL ,
+     `password` VARCHAR(45) NOT NULL,
+     `email` VARCHAR(30) DEFAULT NULL,
+     PRIMARY KEY (`id`)
+   )ENGINE=INNODB DEFAULT CHARSET=utf8

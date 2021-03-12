@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <style>
+        body{
+            background-image:url("images/background1.jpg");
+        }
+        .container{
+            margin:250px;
+        }
+        h1{
+            color: white;
+            text-align: center;
+        }
+
+        .l1{
+            margin:430px;
+        }
+        .l2{
+            margin:480px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <h1>注册</h1>
+    <form action="http://localhost:8080/loadsystem/register" method="post">
+        <label class="l1"><input type="text" name="userName" placeholder="your username"/></label>
+
+        <br/>
+        <label class="l1"><input type="password" name="passWord01" placeholder="password" /></label>
+
+        <br/>
+        <label class="l1"><input type="password" name="passWord02" placeholder="confirm password" /></label>
+
+        <br/>
+        <label class="l1"><input type="email" name="email" placeholder="email" /></label>
+
+        <br/>
+        <label class="l2"><input type="submit" value="提交"></input></label>
+
+        <br/>
+
+    </form>
+</div>
+
+
+</body>
+</html>

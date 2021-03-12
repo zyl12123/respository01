@@ -1,15 +1,17 @@
 package com.zyl.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.zyl.entity.UserAddr;
+import com.zyl.entity.UserRegister;
 import com.zyl.entity.UserInfo;
 
 public interface UserDao {
-    public void save(Connection conn,UserAddr userAddr) throws SQLException;
-    public void update(Connection conn,UserAddr userAddr) throws SQLException;
-    public void delete(Connection conn,long id) throws SQLException;
-    public UserAddr singalSelect(Connection conn, long id) throws SQLException;
-    public boolean queryUser(Connection conn,UserInfo userInfo) throws SQLException;
+    public PreparedStatement getPs();
+    public ResultSet getRes();
+    public void register(Connection conn, UserInfo userInfo) throws SQLException;//注册账户
+    public void modifyPassword(Connection conn, UserInfo userInfo) throws SQLException;
+    public boolean queryUser(Connection conn,UserInfo userInfo) throws SQLException;//查询账号密码是否正确
 }

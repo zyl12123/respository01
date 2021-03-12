@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录页面</title>
+    <title>改密页面</title>
     <style>
         body{
             background-image:url("images/background1.jpg");
@@ -36,23 +36,23 @@
 </head>
 <body>
 <div class="container">
-    <h1>登录</h1>
-    <form action="http://localhost:8080/loadsystem/login" method="post">
-        <label class="l1"><input type="text" name="userName" placeholder="Your username"/></label>
+    <h1>改密</h1>
+    <form action="http://localhost:8080/loadsystem/modifypwd" method="post">
+        <label class="l1"><input type="text" name="userName" placeholder="your username"/></label>
 
         <br/>
-        <label class="l1"><input type="password" name="passWord" placeholder="password" /></label>
+        <label class="l1"><input type="password" name="oldPassWord" placeholder="old password" /></label>
+
+        <br/>
+        <label class="l1"><input type="password" name="newPassWord" placeholder="new password" /></label>
+
+        <br/>
+        <label class="l1"><input type="password" name="newPassWord02" placeholder="confirm new password" /></label>
 
         <br/>
         <label class="l2"><input type="submit" value="提交"></input></label>
 
         <br/>
-        <h3>还没有注册？</h3>
-        <br/>
-        <scan style="margin:480px"><a href="register.html" target="_self">注册</a></scan>
-        <br/>
-        <br/>
-        <a style="margin:480px;" href="modifypwd.html" target="_self">改密</a>
 
     </form>
 </div>

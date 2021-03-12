@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.zyl.service.UserService;
 import com.zyl.entity.UserInfo;
-import com.zyl.util.JdbcUtil;
-
+import com.zyl.util.JdbcUtil02;
+/*
+* 登录
+* */
 public class UserServlet extends HttpServlet {
     UserService userService = new UserService();
 
@@ -29,27 +31,31 @@ public class UserServlet extends HttpServlet {
         //Connection conn = connectionFactory.getConnection();
         Connection conn=null;
         try {
-            conn= JdbcUtil.getConnection();//获取数据库连接
+            conn= JdbcUtil02.getConnection();//获取数据库连接
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             if(userService.checkUser(conn, user)){
                 System.out.println("userServlet.doPost()"+"登陆成功");
-                RequestDispatcher rd = req.getRequestDispatcher("welcome.jsp");
+                //请求转发，url不变，要加/，代表web应用
+                RequestDispatcher rd = req.getRequestDispatcher("/welcome.jsp");
                 req.setAttribute("userName", userName);
                 req.setAttribute("passWord", passWord);
                 req.setAttribute("login", "1");
                 rd.forward(req, resp);
             }else{
                 System.out.println("userServlet.doPost()"+"登陆失败");
-                RequestDispatcher rd = req.getRequestDispatcher("welcome.jsp");
+                RequestDispatcher rd = req.getRequestDispatcher("/welcome.jsp");
                 req.setAttribute("userName", userName);
                 req.setAttribute("passWord", passWord);
                 rd.forward(req, resp);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            JdbcUtil02.release(conn,userService.getUserDao().getPs(),userService.getUserDao().getRes());
         }
     }
 

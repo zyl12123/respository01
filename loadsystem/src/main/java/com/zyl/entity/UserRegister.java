@@ -1,6 +1,6 @@
 package com.zyl.entity;
 
-public class UserAddr extends IdEntity {
+public class UserRegister extends IdEntity {
     private String country;
     private String city;
     private String userid;
