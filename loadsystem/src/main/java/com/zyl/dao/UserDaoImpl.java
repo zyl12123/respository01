@@ -5,9 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.zyl.entity.UserRegister;
 import com.zyl.entity.UserInfo;
-import com.zyl.util.JdbcUtil02;
 
 public class UserDaoImpl implements UserDao {
     public PreparedStatement getPs() {

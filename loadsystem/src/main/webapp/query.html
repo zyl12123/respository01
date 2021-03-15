@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            font-family:楷体;
+        }
+        .div1{
+            margin-left:550px;
+        }
+        .div2{
+            margin-left:570px;
+        }
+    </style>
+</head>
+<body>
+<script src="./js/jquery-3.2.1.js"
+        type="text/javascript"></script>   <!-- 要使用JQuery，要先导入 -->
+<script type="text/javascript">
+
+		function getdata1() {   //响应返回得到字符串
+			$.ajax({
+				type:"POST",
+				url:"http://localhost:8080/loadsystem/query",
+				//data:"name=dc",  //发送到服务端的数据（携带数据）
+				success: function(data){
+                  /*这个方法里是ajax发送请求成功之后执行的代码*/
+                  var msg = JSON.parse(data);
+
+                      for(var i=0;i<msg.data.length;i++){
+                        console.log(msg.data[i].bookname);
+                      console.log(msg.data[i].bookid);
+                      console.log(msg.data[i].author);
+                      console.log(msg.data[i].state);
+                      }
+
+                      var str = "";//定义用于拼接的字符串
+                        for (var i = 0; i < data.length; i++) {
+                        //拼接表格的行和列
+                        if(msg.data[i].state==0){
+                        str1="</td>"+"<td>" + "未借出";
+                        }
+                        else{
+                            str1="</td>"+"<td>" + "已借出";
+                        }
+                        str = "<tr><td>" + msg.data[i].bookid + "</td>"+"<td>"+msg.data[i].bookname+"</td>"+"<td>"+msg.data[i].author+str1+"</td></tr>";
+
+                        //追加到table中
+                        $("#tab").append(str); }
+              }
+			});
+		}
+		getdata1();
+
+
+
+<!--        $(function(){-->
+<!--            $('.click').click(function(e){ //-->
+<!--                $.ajax({-->
+<!--				type:"POST",-->
+<!--				url:"http://localhost:8080/loadsystem/borrow",-->
+<!--				data: {bookid:$(".text01").val()},  //发送到服务端的数据（携带数据）-->
+<!--				success: function(data){-->
+<!--				 var msg = JSON.parse(data);-->
+<!--				 alert(msg);-->
+<!--             }-->
+<!--			});-->
+<!--            })-->
+<!--        });-->
+</script>
+<div class="div2">
+    <form action="http://localhost:8080/loadsystem/borrow" method="post">
+
+        <input type="text" name="bookid" placeholder="请输入要借阅的书籍id" />
+
+        <input type="submit" value="确认借阅"/>
+    </form>
+</div>
+
+<div class="div1">
+    <table id="tab" border=2px>
+        <tr>
+            <td>书籍编号</td>
+            <td>书籍名称</td>
+            <td>书籍作者</td>
+            <td>书籍状态</td>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>

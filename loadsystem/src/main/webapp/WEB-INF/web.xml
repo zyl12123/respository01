@@ -35,6 +35,43 @@
     <url-pattern>/modifypwd</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>try</servlet-name>
+    <servlet-class>com.zyl.control.BorrowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>try</servlet-name>
+    <url-pattern>/try</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>query</servlet-name>
+    <servlet-class>com.zyl.control.QueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>query</servlet-name>
+    <url-pattern>/query</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>borrow</servlet-name>
+    <servlet-class>com.zyl.control.BorrowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>borrow</servlet-name>
+    <url-pattern>/borrow</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>return</servlet-name>
+    <servlet-class>com.zyl.control.ReturnServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>return</servlet-name>
+    <url-pattern>/return</url-pattern>
+  </servlet-mapping>
+
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>com.zyl.filter.CharacterEncodingFilter</filter-class>

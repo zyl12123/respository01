@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.zyl.service.UserService;
 import com.zyl.entity.UserInfo;
@@ -38,17 +39,20 @@ public class UserServlet extends HttpServlet {
         try {
             if(userService.checkUser(conn, user)){
                 System.out.println("userServlet.doPost()"+"登陆成功");
+
+                HttpSession session=req.getSession();
+
+                session.setAttribute("userName",userName);
+
                 //请求转发，url不变，要加/，代表web应用
-                RequestDispatcher rd = req.getRequestDispatcher("/welcome.jsp");
-                req.setAttribute("userName", userName);
-                req.setAttribute("passWord", passWord);
-                req.setAttribute("login", "1");
+                RequestDispatcher rd = req.getRequestDispatcher("/home.html");
+                req.setAttribute("name","hhh");
+
                 rd.forward(req, resp);
             }else{
                 System.out.println("userServlet.doPost()"+"登陆失败");
-                RequestDispatcher rd = req.getRequestDispatcher("/welcome.jsp");
-                req.setAttribute("userName", userName);
-                req.setAttribute("passWord", passWord);
+                RequestDispatcher rd = req.getRequestDispatcher("/login-error.html");
+
                 rd.forward(req, resp);
             }
         } catch (SQLException e) {

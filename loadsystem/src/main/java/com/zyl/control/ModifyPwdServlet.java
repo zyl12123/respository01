@@ -40,7 +40,7 @@ public class ModifyPwdServlet extends HttpServlet {
         try {
             if(userService.checkUser(conn, user)){
                 userService.modifyPasswordService(conn,user2);
-                RequestDispatcher rd = req.getRequestDispatcher("/mod-success.html");
+                RequestDispatcher rd = req.getRequestDispatcher("/mod-result.html");
                 rd.forward(req, resp);
             }else{
                 RequestDispatcher rd = req.getRequestDispatcher("/mod-fail.html");
